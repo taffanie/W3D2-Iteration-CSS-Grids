@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: url(https://cdn.dribbble.com/users/383120/screenshots/6178517/drib_kitchen.png) no-repeat center center fixed; 
+    background-size: cover;
+    padding: 0px 16px;
+}
+
+nav a {
+  font-family: 'Gochi Hand', cursive;
+  color: #252764;
+  font-size: 50px;
+}
+
+a {
+  text-decoration: none;
+}
+
+h2 {
+    font-size: 1.1rem;
+    line-height: 1.1rem;
+    margin-bottom: 8px;
+    color: #636363; 
+}
+
+.featured-listings {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+article {
+    background: #fff;
+    /* width: 320px; */
+    height: 400px;
+    /* border-radius: 10px; */
+    border: 4px solid #252764;
+    text-align: center;
+    box-shadow: 0px 15px 88px -37px rgba(0,0,0,0.17);
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.card-header {
+    height: 50%;
+    background: #000 center no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+
+.favourite-btn {
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    border-radius: 50%;
+    position: relative;
+    top: 173px;
+    left: 24px;
+    border: 2px solid #fff;
+    background: #252764;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.favourite-btn:hover {
+    filter: brightness(125%);
+    cursor: pointer;
+}
+
+.card-body {
+    padding: 24px;
+    font-family: 'Lato','Arial',sans-serif;
+    font-size: 0.9rem;
+    color: #636363;
+  }
+
+/* css for mobile goes here */
+@media screen and (min-width: 40em) {
+  /* css for mid screens goes here */
+  section{
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-template-rows: none;
+      gap: 1rem;
+  }
+  article{
+    margin-bottom: 0px;
+  }
+}
+@media screen and (min-width: 70em) {
+  /* css for massive screens goes here */
+  section{
+      grid-template-columns: auto auto auto;
+  }
+}
+
+@media screen and (min-width: 100em) {
+  /* css for massive screens goes here */
+  section{
+      grid-template-columns: auto auto auto auto;
+  }
+}
