@@ -1,0 +1,21 @@
+<header class="restaurant-img" style="background-image: url({{restaurant.image}});">
+    <h1 class="restaurant-name"><p>{{restaurant.name}}</p></h1>
+</header>
+    
+<section>   
+    {{#each menus}}
+        <div class="menu-card">
+            <main>
+                <h2 class="menu-title">{{this.title}}</h2><br>
+                <dl>
+                    {{#each items}}
+                        <div>
+                            <dt>{{this.name}}</dt>
+                            <dd>{{this.price}}</dd>
+                        </div>
+                    {{/each}}
+                </dl>
+            </main>
+        </div>
+    {{/each}}
+</section>

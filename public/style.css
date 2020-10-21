@@ -10,8 +10,18 @@
 body {
     background: url(https://cdn.dribbble.com/users/383120/screenshots/6178517/drib_kitchen.png) no-repeat center center fixed; 
     background-size: cover;
-    padding: 0px 16px;
+    padding: 0 16px;
 }
+
+/* nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+} */
+
+/* .content {
+  margin-top: 60px;
+} */
 
 nav a {
   font-family: 'Gochi Hand', cursive;
@@ -24,7 +34,7 @@ a {
 }
 
 h2 {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     line-height: 1.1rem;
     margin-bottom: 8px;
     color: #636363; 
@@ -49,11 +59,12 @@ article {
     margin-bottom: 16px;
 }
 
-.card-header {
+header {
     height: 50%;
     background: #000 center no-repeat;
     background-size: cover;
     position: relative;
+    text-align: left;
   }
 
 .favourite-btn {
@@ -77,12 +88,56 @@ article {
     cursor: pointer;
 }
 
-.card-body {
+main {
     padding: 24px;
     font-family: 'Lato','Arial',sans-serif;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #636363;
   }
+
+.menu-card, .restaurant-img {
+  background: #fff;
+  border: 4px solid #252764;
+  box-shadow: 0px 15px 88px -37px rgba(0,0,0,0.17);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+dl div {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.menu-title {
+  font-family: 'Gochi Hand', cursive;
+  color: #252764;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.restaurant-name {
+  font-size: 40px;
+  padding: 0.5rem;
+  color: whitesmoke;
+  font-family: 'Gochi Hand', cursive;
+  text-transform: uppercase;
+}
+
+.restaurant-name p {
+  background: rgba(0,0,0,0.5);
+  box-shadow: 0 0 0 10px rgba(0,0,0,0.5);
+}
+
+.restaurant-img {
+    width: 99%;
+    height: 20vh;
+    object-fit: cover;
+}
+
+dt {
+  text-transform: capitalize;
+}
 
 /* css for mobile goes here */
 @media screen and (min-width: 40em) {
@@ -94,6 +149,9 @@ article {
       gap: 1rem;
   }
   article{
+    margin-bottom: 0px;
+  }
+  .menu-card {
     margin-bottom: 0px;
   }
 }

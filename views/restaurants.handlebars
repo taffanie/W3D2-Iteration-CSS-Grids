@@ -1,21 +1,22 @@
-{{!-- My Styling--}}
-
 <section>
     {{#each restaurants}}
         <div class="featured-listing">
-            <article class="restaurant-card">
-                <div class="card-header" style="background-image: url({{this.image}});">
-                    <div class="favourite-btn">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <h2>{{this.name}}</h2>
-                    {{#each this.menus}}
-                        <span>{{this.title}}</span><br>
-                    {{/each}}
-                </div>
+            <a href="/restaurants/{{this.id}}">
+                <article class="restaurant-card">
+                    <header style="background-image: url({{this.image}});">
+                        <div class="favourite-btn">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </header>
+                    <main>
+                        <h2>{{this.name}}</h2>
+                        {{!-- <p>{{this.menus.length}} menus:</p><br> --}}
+                        {{#each this.menus}}
+                            <span>{{this.title}}</span><br>
+                        {{/each}}
+                    </main>
             </article>
+            </a>
         </div>
     {{/each}}
 </section>

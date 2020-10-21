@@ -3,9 +3,8 @@ const app = express()
 const Handlebars = require('handlebars')
 const expressHandlebars = require('express-handlebars')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
-const { Restaurant, sequelize } = require('./models')
+const { Restaurant, Menu, Item, sequelize } = require('./models')
 const seed = require('./models/seed')
-
 const handlebars = expressHandlebars({
     handlebars: allowInsecurePrototypeAccess(Handlebars)
 })
@@ -22,9 +21,21 @@ app.get('/', (request, response) => {
 
 app.get('/restaurants', async (request, response) => {
     const restaurants = await Restaurant.findAll({
-        include: 'menus'
+        include: 'menus',
+        nest: true
     })
     response.render('restaurants', {restaurants})
+})
+
+app.get('/restaurants/:id', async (request, response) => {
+    console.log(request.params.id)
+    const restaurant = await Restaurant.findByPk(request.params.id)
+    console.log(restaurant)
+    const menus = await restaurant.getMenus({
+        include: 'items',
+        nest: true
+    })
+    response.render('restaurant', {restaurant, menus})
 })
 
 // ----- Run Server ------ 
