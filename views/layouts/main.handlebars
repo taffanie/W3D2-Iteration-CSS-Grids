@@ -8,12 +8,20 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
 </head>
 <body>
-    <nav>
-        <a href="/">Home</a>&nbsp;&nbsp;&nbsp;
+    <nav id="navbar">
+        <a href="/">Home</a>
         <a href="/restaurants">Restaurants</a>
     </nav>
     <div class="content">
         {{{ body }}} 
     </div>
+    <script>
+        window.onscroll = () => {
+        const nav = document.querySelector("#navbar");
+        if(this.scrollY <= 10)
+        nav.className = ''; else
+        nav.className = 'scroll' 
+    }
+    </script>
 </body>
 </html>

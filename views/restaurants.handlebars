@@ -19,4 +19,15 @@
             </a>
         </div>
     {{/each}}
+    <article>
+        <form action="/restaurants" method="POST">
+            <br><br><br>
+            <h3 class="menu-title">New<br>restaurant:</h3>
+            <label>Restaurant Name:</label>
+            <input name="name" type="text" required>
+            <label>Restaurant Image:</label>
+            <input name="image" type="url" required>
+            <button type="submit">Add Restaurant</button>
+        </form>
+    </article>
 </section>

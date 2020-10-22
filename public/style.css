@@ -13,31 +13,42 @@ body {
     padding: 0 16px;
 }
 
-/* nav {
+nav {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-} */
+  z-index: 1;
+  transition: background-color 0.4s ease-out;
+}
 
-/* .content {
+.content {
   margin-top: 60px;
-} */
+}
 
 nav a {
   font-family: 'Gochi Hand', cursive;
   color: #252764;
   font-size: 50px;
+  margin-left: 16px;
 }
+
+.scroll {
+  background-color: #f4f2ee;
+  
+}
+
 
 a {
   text-decoration: none;
 }
 
-h2 {
-    font-size: 1.3rem;
+h2, label {
+    font-size: 1.15rem;
     line-height: 1.1rem;
     margin-bottom: 8px;
     color: #636363; 
+    font-family: 'Lato','Arial',sans-serif;
 }
 
 .featured-listings {
@@ -46,6 +57,14 @@ h2 {
     align-items: center;
     justify-content: center;
   }
+
+/* article:hover{
+  transition: all 0.2s ease-out;
+  box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+  top: -4px;
+  border: 1px solid #cccccc;
+  background-color: white;
+} */
 
 article {
     background: #fff;
@@ -91,9 +110,13 @@ header {
 main {
     padding: 24px;
     font-family: 'Lato','Arial',sans-serif;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #636363;
   }
+
+main span {
+  color: #636363;
+}
 
 .menu-card, .restaurant-img {
   background: #fff;
@@ -122,11 +145,12 @@ dl div {
   color: whitesmoke;
   font-family: 'Gochi Hand', cursive;
   text-transform: uppercase;
+  background: rgba(0,0,0,0.5);
+  box-shadow: 0 0 0 10px rgba(0,0,0,0.5);
 }
 
 .restaurant-name p {
-  background: rgba(0,0,0,0.5);
-  box-shadow: 0 0 0 10px rgba(0,0,0,0.5);
+  display: inline;
 }
 
 .restaurant-img {
@@ -137,6 +161,39 @@ dl div {
 
 dt {
   text-transform: capitalize;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin-top: 60px; */
+}
+
+label {
+  margin-top: 8px;
+}
+
+input, button {
+  width: 50%;
+  margin-bottom: 8px;
+  font-family: 'Lato','Arial',sans-serif;
+  font-size: 0.95rem;
+  color: #636363;
+}
+
+button {
+  margin-top: 8px;
+  height: 36px;
+  background-color: #252764;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.fa-trash-alt, .fa-edit {
+  color: whitesmoke;
+  font-size: 32px;
 }
 
 /* css for mobile goes here */
