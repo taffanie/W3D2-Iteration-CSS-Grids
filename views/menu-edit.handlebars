@@ -1,0 +1,10 @@
+<div class="menu-card">
+        <main>
+            <form action="/restaurants/{{menu.RestaurantId}}/menus/{{menu.id}}/edit" method="POST">
+                <h3 class="menu-title">Update<br>menu:</h3>
+                <label>Menu Title:</label>
+                <input name="title" type="text" value="{{menu.title}}"">
+            <button type="submit">Update Menu</button>
+        </form>
+        </main>
+    </div>

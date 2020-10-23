@@ -21,6 +21,8 @@ app.get('/', (request, response) => {
     response.render('home')
 })
 
+// ----- RESTAURANT CRUD ----- 
+
 // Read all restaurants & menus 
 
 app.get('/restaurants', async (request, response) => {
@@ -71,7 +73,9 @@ app.post('/restaurants/:id/edit', async (req, res) => {
     res.redirect(`/restaurants/${restaurant.id}`)
 })
 
-// Add menu to restaurant 
+// ----- MENU CRUD ----- 
+
+// Add menu to restaurant (create)
 
 app.post('/restaurants/:restaurant_id/menus', async (req, res) => {
     const restaurant = await Restaurant.findByPk(req.params.restaurant_id)
@@ -84,47 +88,66 @@ app.post('/restaurants/:restaurant_id/menus', async (req, res) => {
     res.render('restaurant', {restaurant, menus})
 })
 
-// Add items to menu 
+// Edit menu
 
 app.get('/restaurants/:restaurant_id/menus/:menu_id/edit', async (req, res) => {
-    const menu = await Menu.findOne({
-        where: {
-            MenuId: req.params.menu_id
-        }
-    })
+    const menu = await Menu.findByPk(req.params.menu_id)
     res.render('menu-edit', {menu})
 })
 
-app.post('/restaurants/:restaurant_id/menus/:menu_id/items', async (req, res) => {
-    const restaurant = await Restaurant.findByPk(req.params.restaurant_id)
-    const menus = await restaurant.getMenus({
-        include: 'items',
-        nest: true
-    })
-    const menu = await Menu.findOne({
-        where: {
-            MenuId: req.params.menu_id
-        }
-    })
-    const item = await Item.create({name: req.body.name, price: req.body.price, MenuId: req.params.menu_id});
-    menu.addItem()
-   
-    res.render('restaurant', {restaurant, menus})
+app.post('/restaurants/:restaurant_id/menus/:menu_id/edit', async (req, res) => {
+    const menu = await Menu.findByPk(req.params.menu_id)
+    await menu.update(req.body)
+    res.redirect(`/restaurants/${req.params.restaurant_id}`)
 })
 
-// Delete menu from restaurant 
+// Delete menu 
 
-// app.get('/restaurants/:restaurant_id/menus/delete', async (req, res) => {
-//     const restaurant = await Restaurant.findByPk(req.params.restaurant_id)
-//     const menu = await Menu.findOne({
-//         where: {
-//             restaurantId: req.params.restaurant_id
-//         }
-//     })
-//     console.log(menu)
-//     menu.destroy()
-//     res.render('restaurant', {restaurant})
-// })
+app.get('/restaurants/:restaurant_id/menus/:menu_id/delete', async (req, res) => {
+    const menu = await Menu.findByPk(req.params.menu_id)
+        menu.destroy()
+        res.redirect(`/restaurants/${req.params.restaurant_id}`)
+})
+
+// ----- ITEM CRUD -----
+
+// Add item to menu (create)
+
+app.get('/restaurants/:restaurant_id/menus/:menu_id/items', async (req, res) => {
+    const restaurant = await Restaurant.findByPk(req.params.restaurant_id)
+    const menu = await Menu.findByPk(req.params.menu_id)
+    res.render('add-item', {restaurant, menu})
+})
+
+app.post('/restaurants/:restaurant_id/menus/:menu_id/items', async (req, res) => {
+    const menu = await Menu.findByPk(req.params.menu_id)
+    const item = await Item.create({name: req.body.name, price: req.body.price, MenuId: req.params.menu_id});
+    menu.addItem(item)
+    res.redirect(`/restaurants/${req.params.restaurant_id}`)
+})
+
+// Delete item
+
+app.get('/restaurants/:restaurant_id/menus/:menu_id/items/:item_id/delete', async (req, res) => {
+    const item = await Item.findByPk(req.params.item_id)
+        item.destroy()
+        res.redirect(`/restaurants/${req.params.restaurant_id}`)
+})
+
+// Edit item 
+
+app.get('/restaurants/:restaurant_id/menus/:menu_id/items/:item_id/edit', async (req, res) => {
+    const restaurant = await Restaurant.findByPk(req.params.restaurant_id)
+    const menu = await Menu.findByPk(req.params.menu_id)
+    const item = await Item.findByPk(req.params.item_id)
+    res.render('edit-item', {restaurant, menu, item})
+})
+
+app.post('/restaurants/:restaurant_id/menus/:menu_id/items/:item_id/edit', async (req, res) => {
+    const item = await Item.findByPk(req.params.item_id)
+    await item.update(req.body)
+    res.redirect(`/restaurants/${req.params.restaurant_id}`)
+})
 
 // ----- Run Server ------ 
 

@@ -1,0 +1,11 @@
+<article>
+    <form action="/restaurants/{{restaurant.id}}/menus/{{menu.id}}/items/{{item.id}}/edit" method="POST">
+        <br><br><br>
+        <h3 class="menu-title">Update<br>item:</h3>
+        <label>Item Name:</label>
+        <input name="name" type="text" value="{{item.name}}">
+        <label>Item Price:</label>
+        <input name="price" type="number" value="{{item.price}}">
+        <button type="submit">Update Item</button>
+    </form>
+</article>

@@ -8,16 +8,21 @@
     {{#each menus}}
         <div class="menu-card">
             <main>
-                <h2 class="menu-title">{{this.title}}</h2><br>
-                <a href="/restaurants/{{this.RestaurantId}}/menus/{{this.id}}/items">➕</a>
-                {{!-- <a href="/restaurants/{{this.restaurantId}}/menus/delete">❌</a> --}}
+                <h2 class="menu-title" style="display: inline;">{{this.title}}</h2>&nbsp;
+                <a href="/restaurants/{{this.RestaurantId}}/menus/{{this.id}}/edit">✏️</a>
+                <a href="/restaurants/{{this.RestaurantId}}/menus/{{this.id}}/delete">❌</a>
                 <dl>
+                    <br>
                     {{#each items}}
-                        <div>
-                            <dt>{{this.name}}</dt>
+                        <div class="items">
+                            <dt>{{this.name}}
+                                <a style="color: #252764;"href="/restaurants/{{../../restaurant.id}}/menus/{{this.MenuId}}/items/{{this.id}}/edit">✎</a>
+                                <a href="/restaurants/{{../../restaurant.id}}/menus/{{this.MenuId}}/items/{{this.id}}/delete">✖️</a>
+                            </dt>
                             <dd>{{this.price}}</dd>
                         </div>
                     {{/each}}
+                    &nbsp;&nbsp;<a href="/restaurants/{{this.RestaurantId}}/menus/{{this.id}}/items">➕</a>
                 </dl>
             </main>
         </div>

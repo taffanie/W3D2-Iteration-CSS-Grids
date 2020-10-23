@@ -1,0 +1,11 @@
+<article>
+    <form action="/restaurants/{{restaurant.id}}/menus/{{menu.id}}/items" method="POST">
+        <br><br><br>
+        <h3 class="menu-title">New<br>item:</h3>
+        <label>Item Name:</label>
+        <input name="name" type="text" required>
+        <label>Item Price:</label>
+        <input name="price" type="number" required>
+        <button type="submit">Add Item</button>
+    </form>
+</article>
